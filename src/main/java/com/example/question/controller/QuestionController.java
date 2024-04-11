@@ -40,6 +40,7 @@ public class QuestionController {
     @PostMapping("/generate")
     public ResponseEntity<List<Question>> getQuestionsForQuiz(@RequestBody QuizDto quizDto) {
         List<Question> questions = questionService.findByCategoryAndNumber(quizDto.getCategoryName(), quizDto.getNumberOfQuestions());
+        
         return new ResponseEntity<>(questions, HttpStatus.OK);
     }
 
