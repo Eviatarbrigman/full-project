@@ -11,5 +11,3 @@ api-gateway service: https://github.com/Eviatarbrigman/quiz-question-api-gateway
 These services manage specific functionalities related to quizzes and questions 
 and are stored in a Postgres database. I used Spring Cloud technologies such as Feign Client,
 Eureka, and API Gateway for service discovery, client-side load balancing, and inter-service communication. 
-
-as well as full crud functions.
