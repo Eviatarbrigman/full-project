@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "question",schema = "my_schema")
+@Table(name = "question", schema = "my_schema")
 public class Question {
 
     @Id
@@ -26,6 +26,7 @@ public class Question {
     public Question() {
 
     }
+
     public Question(String question, String answer1, String answer2, String answer3, String answer4, String correctAnswer, QuestionType questionType) {
         this.question = question;
         this.answer1 = answer1;

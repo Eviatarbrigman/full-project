@@ -16,8 +16,9 @@ public class QuestionApplication {
         SpringApplication.run(QuestionApplication.class, args);
 
     }
+
     @Component
-    public class init implements CommandLineRunner{
+    public class init implements CommandLineRunner {
 
         @Override
         public void run(String... args) {

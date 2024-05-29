@@ -1,8 +1,5 @@
 package com.example.question.Dto;
 
-import com.example.question.model.Question;
-
-import java.util.List;
 import java.util.Map;
 
 public class ScoreDto {

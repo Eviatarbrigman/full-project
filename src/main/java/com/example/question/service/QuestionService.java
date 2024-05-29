@@ -7,12 +7,10 @@ import com.example.question.model.Question;
 import com.example.question.repository.QuestionRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -65,34 +63,18 @@ public class QuestionService {
                 .collect(Collectors.toList());
     }
 
-//    public Integer getScore(ScoreDto scoreDto) {
-//        int pointsForCorrectAnswer = 100 / scoreDto.getQuestionList().size();
-//        int finalScore = 0;
-//        List<Question> questionFromDb = questionRepository.findAll();
-//        for (Map.Entry<Integer, String> entry : scoreDto.getQuestionList().entrySet()) {
-//            Integer questionId = entry.getKey();
-//            String answer = entry.getValue();
-//            for (Question currentQuestion : questionFromDb) {
-//                if (currentQuestion.getId().equals(questionId) && currentQuestion.getCorrectAnswer().equals(answer)) {
-//                    finalScore += pointsForCorrectAnswer;
-//                    break;
-//                }
-//            }
-//        }
-//        return finalScore;
-//    }
 
     public Integer getScore(ScoreDto scoreDto) {
         int pointsForCorrectAnswer = 100 / scoreDto.getQuestionList().size();
         List<Question> questionFromDb = questionRepository.findAll();
 
         return scoreDto.getQuestionList().entrySet().stream().mapToInt(value -> {
-           int questionId = value.getKey();
-           String answer = value.getValue();
-           return questionFromDb.stream().filter(question -> question.getId().equals(questionId))
-                   .findFirst()
-                   .map(currentQuestion -> currentQuestion.getCorrectAnswer().equals(answer) ? pointsForCorrectAnswer : 0)
-                   .orElse(0);
+            int questionId = value.getKey();
+            String answer = value.getValue();
+            return questionFromDb.stream().filter(question -> question.getId().equals(questionId))
+                    .findFirst()
+                    .map(currentQuestion -> currentQuestion.getCorrectAnswer().equals(answer) ? pointsForCorrectAnswer : 0)
+                    .orElse(0);
         }).sum();
     }
 
