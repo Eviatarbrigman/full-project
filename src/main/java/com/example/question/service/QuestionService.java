@@ -60,7 +60,9 @@ public class QuestionService {
     }
 
     public List<Question> findByCategoryAndNumber(String type, Integer numOfQuestion) {
-        return questionRepository.findByCategoryAndNumber(QuestionType.valueOf(type)).stream().unordered().limit(numOfQuestion).collect(Collectors.toList());
+        return questionRepository.findByCategoryAndNumber(QuestionType.valueOf(type)).stream()
+                .unordered().limit(numOfQuestion)
+                .collect(Collectors.toList());
     }
 
 //    public Integer getScore(ScoreDto scoreDto) {
